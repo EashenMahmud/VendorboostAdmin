@@ -85,60 +85,67 @@ const AIAgent = () => {
         {/* Left Column - Order Form */}
         <div className="lg:col-span-2 space-y-6">
           {activeTab === 'inventory' && (
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h3 className="text-lg font-medium mb-4">Smart Order Placement</h3>
-              <form onSubmit={handleOrderSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Select Item</label>
-                  <select
-                    value={selectedItem}
-                    onChange={(e) => setSelectedItem(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="">Choose an item...</option>
-                    {inventory?.map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {item.name} (Stock: {item.stockLevel})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Select Vendor</label>
-                  <select
-                    value={selectedVendor}
-                    onChange={(e) => setSelectedVendor(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="">Choose a vendor...</option>
-                    {vendors.map((vendor) => (
-                      <option key={vendor.id} value={vendor.id}>
-                        {vendor.name} (Reliability: {(vendor.reliability * 100).toFixed(1)}%)
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Quantity</label>
-                  <input
-                    type="number"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    min="1"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Get AI Recommendation
-                </button>
-              </form>
-            </div>
+           <div className="bg-white rounded-2xl shadow-lg p-8  mx-auto">
+           <h3 className="text-xl font-semibold text-gray-800 mb-6">Smart Order Placement</h3>
+           <form onSubmit={handleOrderSubmit} className="space-y-6">
+             <div>
+               <label className="block text-sm font-semibold text-gray-700 mb-2">
+                 Select Item
+               </label>
+               <select
+                 value={selectedItem}
+                 onChange={(e) => setSelectedItem(e.target.value)}
+                 className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all"
+               >
+                 <option value="">Choose an item...</option>
+                 {inventory?.map((item) => (
+                   <option key={item.id} value={item.id}>
+                     {item.name} (Stock: {item.stockLevel})
+                   </option>
+                 ))}
+               </select>
+             </div>
+         
+             <div>
+               <label className="block text-sm font-semibold text-gray-700 mb-2">
+                 Select Vendor
+               </label>
+               <select
+                 value={selectedVendor}
+                 onChange={(e) => setSelectedVendor(e.target.value)}
+                 className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all"
+               >
+                 <option value="">Choose a vendor...</option>
+                 {vendors.map((vendor) => (
+                   <option key={vendor.id} value={vendor.id}>
+                     {vendor.name} (Reliability: {(vendor.reliability * 100).toFixed(1)}%)
+                   </option>
+                 ))}
+               </select>
+             </div>
+         
+             <div>
+               <label className="block text-sm font-semibold text-gray-700 mb-2">
+                 Quantity
+               </label>
+               <input
+                 type="number"
+                 value={quantity}
+                 onChange={(e) => setQuantity(e.target.value)}
+                 className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none transition-all"
+                 min="1"
+               />
+             </div>
+         
+             <button
+               type="submit"
+               className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
+             >
+               Get AI Recommendation
+             </button>
+           </form>
+         </div>
+         
           )}
 
           {activeTab === 'delivery' && (
@@ -166,6 +173,18 @@ const AIAgent = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+          {activeTab === 'vendors' && (
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <h3 className="text-lg font-medium mb-4">Coming Soon</h3>
+              
+            </div>
+          )}
+          {activeTab === 'insights' && (
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <h3 className="text-lg font-medium mb-4">Coming Soon</h3>
+              
             </div>
           )}
         </div>
@@ -225,7 +244,7 @@ const AIAgent = () => {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Delivery Time</span>
-                <span className="text-sm font-medium text-blue-600">2.3 days</span>
+                <span className="text-sm font-medium text-blue-600">2.3 hour</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Stock Turnover</span>
